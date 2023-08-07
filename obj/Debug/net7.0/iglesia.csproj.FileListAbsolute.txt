@@ -29,3 +29,14 @@ D:\iglesia\obj\Debug\net7.0\refint\iglesia.dll
 D:\iglesia\obj\Debug\net7.0\iglesia.pdb
 D:\iglesia\obj\Debug\net7.0\iglesia.genruntimeconfig.cache
 D:\iglesia\obj\Debug\net7.0\ref\iglesia.dll
+D:\iglesia\bin\Debug\net7.0\Humanizer.dll
+D:\iglesia\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+D:\iglesia\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\iglesia\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\iglesia\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\iglesia\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+D:\iglesia\bin\Debug\net7.0\Mono.TextTemplating.dll
+D:\iglesia\bin\Debug\net7.0\Npgsql.dll
+D:\iglesia\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\iglesia\bin\Debug\net7.0\System.CodeDom.dll
+D:\iglesia\obj\Debug\net7.0\iglesia.csproj.CopyComplete

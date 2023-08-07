@@ -1,0 +1,35 @@
+@model List<EventoModel>
+
+<h1>Listado de Eventos Litúrgicos</h1>
+
+<div id="calendario"></div>
+
+@section Scripts {
+    <script>
+        // Documento listo
+        $(function() {
+            // Inicializar el calendario con idioma en español
+            $('#calendario').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                locale: 'es', // Establecer el idioma en español
+                events: [
+                    @foreach (var evento in Model)
+                    {
+                        <text>
+                        {
+                            title: '@evento.Nombre',
+                            start: '@evento.Fecha.ToString("yyyy-MM-ddTHH:mm:ss")', // Formato ISO 8601
+                            end: '@evento.Fecha.ToString("yyyy-MM-ddTHH:mm:ss")', // Puedes usar Hora_fin si corresponde
+                            url: '@Url.Action("Edit", new { id = evento.ID_evento })'
+                        },
+                        </text>
+                    }
+                ]
+            });
+        });
+    </script>
+}

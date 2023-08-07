@@ -1,0 +1,30 @@
+@model EventoModel
+
+<h1>Editar Evento</h1>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label for="Nombre">Nombre:</label>
+        <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Model.Nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="Fecha">Fecha:</label>
+        <input type="date" class="form-control" id="Fecha" name="Fecha" value="@Model.Fecha.ToString("yyyy-MM-dd")" required>
+    </div>
+    <div class="form-group">
+        <label for="Hora_inicio">Hora de Inicio:</label>
+        <input type="time" class="form-control" id="Hora_inicio" name="Hora_inicio" value="@Model.Hora_inicio.ToString(@"hh\:mm")" required>
+    </div>
+    <div class="form-group">
+        <label for="Hora_fin">Hora de Fin:</label>
+        <input type="time" class="form-control" id="Hora_fin" name="Hora_fin" value="@Model.Hora_fin.ToString(@"hh\:mm")" required>
+    </div>
+    <div class="form-group">
+        <label for="Descripcion">Descripción:</label>
+        <textarea class="form-control" id="Descripcion" name="Descripcion">@Model.Descripcion</textarea>
+    </div>
+    <input type="hidden" name="ID_evento" value="@Model.ID_evento" />
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+</form>
+
+<a asp-action="Index" class="btn btn-secondary">Cancelar</a>

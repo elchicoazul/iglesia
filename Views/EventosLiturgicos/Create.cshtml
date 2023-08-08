@@ -1,37 +1,86 @@
 @model EventoModel
+<div class="col-md-12">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Registro de Evento</div>
+            <div class="ibox-tools">
+                <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+            </div>
+        </div>
+        <div class="ibox-body">
+            <form asp-action="Create" method="post" onloadstart="initMap()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Nombre">Nombre:</label>
+                            <input asp-for="Nombre" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Fecha">Fecha:</label>
+                            <input asp-for="Fecha" type="date" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Hora_inicio">Hora de inicio:</label>
+                            <input asp-for="Hora_inicio" type="time" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Hora_fin">Hora de fin:</label>
+                            <input asp-for="Hora_fin" type="time" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Descripcion">Descripción:</label>
+                            <textarea asp-for="Descripcion" class="form-control"></textarea>
+                        </div>
+                        <input type="hidden" asp-for="Latitud" />
+                        <input type="hidden" asp-for="Longitud" />
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="search-input" placeholder="Buscar lugar o dirección" />
+                        <button type="button" onclick="searchAddress()">Buscar</button>
+                        <div id="map" style="height: 400px;"></div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        // Función para inicializar el mapa con Leaflet
+        function initMap() {
+            var map = L.map('map').setView([0, 0], 8); // Coordenadas iniciales del mapa y nivel de zoom
 
-<h2>Registro de Evento</h2>
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
 
-<form asp-action="Create" method="post" onloadstart="initMap()">
-    <div class="form-group">
-        <label  asp-for="Nombre">Nombre:</label>
-        <input asp-for="Nombre" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Fecha">Fecha:</label>
-        <input asp-for="Fecha" type="date" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Hora_inicio">Hora de inicio:</label>
-        <input asp-for="Hora_inicio" type="time" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Hora_fin">Hora de fin:</label>
-        <input asp-for="Hora_fin" type="time" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Descripcion">Descripción:</label>
-        <textarea asp-for="Descripcion" class="form-control"></textarea>
-    </div>
-    <input  asp-for="Latitud" />
-    <input  asp-for="Longitud" />
-    <div>
-    <input type="text" id="search-input" placeholder="Buscar lugar o dirección" />
-    <button type="button" onclick="searchAddress()">Buscar</button>
-    </div>
-    <div id="map" style="height: 400px;"></div>
-    <button type="submit" class="btn btn-primary">Registrar</button>
-</form>
+            // Agregar un marcador para que los usuarios puedan seleccionar la ubicación
+            var marker = L.marker([0, 0], {
+                draggable: true
+            }).addTo(map);
 
+            // Escuchar el evento 'dragend' para obtener las coordenadas cuando el marcador se mueve
+            marker.on('dragend', function (event) {
+                var latlng = marker.getLatLng();
+                document.getElementById('Latitud').value = latlng.lat;
+                document.getElementById('Longitud').value = latlng.lng;
+            });
+        }
 
+        // Llamar a la función initMap() después de que el DOM esté completamente cargado
+        document.addEventListener("DOMContentLoaded", initMap);
+    </script>
+    <script>
+    // Función para realizar la búsqueda de direcciones o lugares ingresados por el usuario
+    function searchAddress() {
+        var input = document.getElementById('search-input').value;
+        if (input) {
+            // Utiliza el control de geocodificación para realizar la búsqueda
+            geocoder.geocode(input);
+        }
+    }
+</script>
 
+}

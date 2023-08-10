@@ -1,0 +1,31 @@
+
+@model  iglesia.Models.Asistencia
+<div class="col-md-12">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Asistencias por Documento</div>
+            <div class="ibox-tools">
+                <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+            </div>
+        </div>
+        <div class="ibox-body">
+
+
+<form asp-action="RegistrarEntrada" method="post">
+    <div class="row">
+        <div class="col-md-6">
+           <div class="form-group">
+             <label for="documento">Documento:</label>
+             <input type="text" class="form-control" id="Dni" name="Dni" >
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+    <button type="reset" class="btn btn-secondary">Cancelar</button>
+
+</form>
+        </div>
+    </div>
+</div>

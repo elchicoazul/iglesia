@@ -1,0 +1,44 @@
+@model List<EventoModel>
+<div class="col-md-12">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Listado de eventos programados</div>
+            <div class="ibox-tools">
+                <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+            </div>
+        </div>
+        <div class="ibox-body">
+
+<table class="table">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="border w-1/2 px-4 py-2">ID</th>
+            <th class="border w-1/2 px-4 py-2">Nombre</th>
+            <th class="border w-1/2 px-4 py-2">Fecha</th>
+            <th class="border w-1/2 px-4 py-2">Hora de inicio</th>
+            <th class="border w-1/2 px-4 py-2">Hora de finalizacion</th>
+            <th class="border w-1/2 px-4 py-2">Descripcion</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var even in Model)
+        {
+            <tr>
+                <td class="border px-4 py-2">@even.ID_evento</td>
+                <td class="border px-4 py-2">@even.Nombre</td>
+                <td class="border px-4 py-2">@even.Fecha</td>
+                <td class="border px-4 py-2">@even.Hora_inicio</td>
+                <td class="border px-4 py-2">@even.Hora_fin</td>
+                <td class="border px-4 py-2">@even.Descripcion</td>
+
+                <td><a href="Index" >Asistencia</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+                   
+        </div>
+    </div>
+</div>

@@ -13,8 +13,9 @@ namespace iglesia.Data
         {
             // Configurar la clave primaria
             modelBuilder.Entity<EventoModel>().HasKey(e => e.ID_evento);
+             modelBuilder.Entity<Asistencia>().HasKey(e => e.Id);
         }
          public DbSet<EventoModel> EventosLiturgicos { get; set; }
-         
+        public DbSet<Asistencia> AsistenciaLiturgico { get; set; }
     }
 }
